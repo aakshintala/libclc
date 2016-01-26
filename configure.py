@@ -103,9 +103,10 @@ available_targets = {
   'nvptx64--' : { 'devices' : [{'gpu' : '', 'aliases' : []} ]},
   'nvptx--nvidiacl'   : { 'devices' : [{'gpu' : '', 'aliases' : []} ]},
   'nvptx64--nvidiacl' : { 'devices' : [{'gpu' : '', 'aliases' : []} ]},
+  'tgsi--' : { 'devices' : [{'gpu' : '', 'aliases' : []} ]},
 }
 
-default_targets = ['nvptx--nvidiacl', 'nvptx64--nvidiacl', 'r600--', 'amdgcn--', 'amdgcn--amdhsa']
+default_targets = ['nvptx--nvidiacl', 'nvptx64--nvidiacl', 'r600--', 'amdgcn--', 'amdgcn--amdhsa', 'tgsi--']
 
 targets = args
 if not targets:
