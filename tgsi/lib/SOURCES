@@ -1,1 +1,4 @@
+workitem/get_group_id.ll
 workitem/get_local_id.ll
+workitem/get_local_size.ll
+workitem/get_num_groups.ll
