@@ -1,17 +1,16 @@
-declare void @llvm.tgsi.local.mem.bar() #0
-declare void @llvm.tgsi.global.mem.bar() #0
+declare void @llvm.tgsi.membar(i32 ) #0
 
-define void @mem_fence(i32 %flags) #2 {
+define void @mem_fence(i32 %flags) #1 {
 barrier_global_test:
-  %0 = icmp ne i32 %flags, 1
+  %0 = icmp uge i32 %flags, 2
   br i1 %0, label %barrier_global, label %barrier_local
 
 barrier_global:
-  call void @llvm.tgsi.global.mem.bar()
+  call void @llvm.tgsi.membar(i32 31)
   br label %done
 
 barrier_local:
-  call void @llvm.tgsi.local.mem.bar()
+  call void @llvm.tgsi.membar(i32 16)
   br label %done
 
 done:
@@ -19,5 +18,4 @@ done:
 }
 
 attributes #0 = { nounwind convergent }
-attributes #1 = { nounwind alwaysinline }
-attributes #2 = { nounwind convergent alwaysinline }
+attributes #1 = { nounwind convergent alwaysinline }
